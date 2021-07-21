@@ -85,7 +85,7 @@ function draw() {
   text(" 200 ", 640, 550);
   text(" 200 ", 720, 550);
 
-  if(gameState ="over"){
+  if(gameState ="end"){
 
     textSize(100);
     fill("red");
