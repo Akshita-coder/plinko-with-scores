@@ -23,7 +23,7 @@ function setup() {
   }
 
 
-
+console.log(gameState)
   //create 1st row of plinko objects
   for (var j = 70; j <=width; j=j+50) { 
     plinkos.push(new Plinko(j,70));
@@ -85,38 +85,49 @@ function draw() {
   text(" 200 ", 640, 550);
   text(" 200 ", 720, 550);
 
-  if(gameState ="end"){
+  if(gameState =="end"){
 
     textSize(100);
     fill("red");
     text("game over",400,400);
 
-  }
-  if(particles!=null)
-  {
-     particles.display();
-      
-      if (particles.body.position.y>760)
-      {
-           
-  if (particles.body.position.x < 300) 
-            {
-                score=score+500;      
-                particles=null;
-               
-   if ( count>= 5) gameState ="end";                          
-            }
+  }            
 
+console.log(gameState)
 
-            else if (particles.body.position.x < 600 && particles.body.position.x > 301 ) 
-            {
-                  score = score + 100;
+    if(particles!=null)
+    {
+       particles.display();
+        
+        if (particles.body.position.y>760)
+        {
+              if (particles.body.position.x < 300) 
+              {
+                  score=score+500;      
                   particles=null;
-}      
-            
+                  if ( count>= 5) gameState ="end";                          
+              }
+
+
+              else if (particles.body.position.x < 600 && particles.body.position.x > 301 ) 
+              {
+                    score = score + 100;
+                    particles=null;
+                    if ( count>= 5) gameState ="end";
+
+              }
+              else if (particles.body.position.x < 900 && particles.body.position.x > 601 )
+              {
+                    score = score + 200;
+                    ball=null;
+                    if ( count>= 5)  gameState ="end";
+
+              }      
+              
+        }
+  
       }
 
-    }
 
   
   //display the plinkos 
@@ -124,18 +135,14 @@ function draw() {
     plinkos[i].display();   
   }
 
- // for (var h = 0; h < plinkos.length; h++) {
-   // plinkos[h].display();   
-  //}
+ 
    
   //display the divisions
   for (var k = 0; k < divisions.length; k++) {
     divisions[k].display();
   }
 
- // for (var k = 0; k < particles.length; k++) {
-   // particles[k].display();
-  //}
+ 
 
   
 
